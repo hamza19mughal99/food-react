@@ -20,10 +20,17 @@ const Login = () => {
 
     const [loginData, setLoginData] = useState({...emptyInput})
     const [loader, setLoader] = useState<boolean>(false);
+    const [error, setError] = useState<string>('')
     const [errorData, setErrorData] = useState({...emptyInput})
 
     const onChangeHandler = (e: { target: { name: any; value: any; }; }) => {
         const {name, value} = e.target;
+
+        setError('');
+        setErrorData({
+            ...errorData,
+            [name]: ''
+        })
 
         setLoginData({
             ...loginData,
@@ -119,7 +126,11 @@ const Login = () => {
                     <div className="col-8 sign-card">
                         <div className="card sign-up-card rounded shadow border-0 bg-white">
                             <div className="card-body text-center">
-                                <h2> LOGIN </h2>
+                                <h2 style={{
+                                    fontWeight: "bold",
+                                    fontSize: "23px"
+                                }}> LOGIN </h2>
+                                <h5 className={'error text-center'}>{error}</h5>
                                 <form className="mt-5" onSubmit={loginDataHandler}>
                                     <div className=" form-row justify-content-center">
                                         <div className="col-md-12 mb-4">

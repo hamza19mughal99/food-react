@@ -222,6 +222,8 @@ const Register = () => {
                             <div className="card sign-up-card rounded shadow border-0 bg-white">
                                 <div className="card-body text-center">
                                     <h2> REGISTRATION </h2>
+
+                                    <h5 className={'error text-center'}>{error}</h5>
                                     <form className="mt-5" onSubmit={registrationDataHandler}>
                                         <div className="container form-row justify-content-center">
                                             <div className="col-md-12 mb-4">
