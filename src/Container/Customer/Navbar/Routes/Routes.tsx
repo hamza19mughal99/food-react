@@ -1,7 +1,7 @@
 import Home from "../../Pages/Home/Home"
 import About from "../../Pages/About/About"
 import Policies from "../../Pages/Policies/Policies"
-import AddToCart from "../../Pages/AddToCart/AddToCart"
+import AddToCart from "../../Pages/Restaurant/AddToCart/AddToCart"
 import Restaurant from "../../Pages/Restaurant/Restaurant/Restaurant"
 import RestaurantView from "../../Pages/Restaurant/RestaurantView/RestaurantView";
 import MyProfile from "../../Pages/MyAccount/MyProfile/MyProfile";
@@ -35,9 +35,10 @@ export const mainRoutes: RoutesLink[] = [
 	},
     // /shop/:id
     {
-        path: '/addToCart/:id',
+        path: '/add-to-cart',
         component: <AddToCart />,
     },
+    // /addToCart/:id
     {
 		path: '/myProfile',
 		component: <MyProfile />
@@ -46,5 +47,4 @@ export const mainRoutes: RoutesLink[] = [
 		path: '/orders',
 		component: <MyOrders />
 	}
-    
 ]

@@ -14,7 +14,7 @@ const Footer = () => {
                         <div className="row ">
                             <div className="col-md-12 text-center">
                                 <NavLink to="/" className="navbar-brand">
-                                    <img src={Logo} className="img-fluid" alt={'logo'} />
+                                    <img src={Logo} className="logo_img" alt={'logo'} />
                                 </NavLink>
                             </div>
                         </div>

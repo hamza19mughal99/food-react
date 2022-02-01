@@ -109,7 +109,7 @@ const Nav = (props) => {
                     </div>
                     <div className="col-md-12 logo-sec text-center">
                         <NavLink to="/" className="navbar-brand active">
-                            <img src={Logo} className="img-fluid" alt="logo" /> </NavLink>
+                            <img src={Logo} className="logo_img" alt="logo" /> </NavLink>
                     </div>
                 </div>
             </div>

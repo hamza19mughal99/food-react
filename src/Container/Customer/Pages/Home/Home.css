@@ -71,6 +71,15 @@
     padding: 6px 0;
 }
 
+.main_home_search{
+    width: 290%;
+    border: none;
+}
+
+.main_home_search .css-yk16xz-control {
+    border: none !important;
+}
+
 .main-search-section{
     display: flex;
 }

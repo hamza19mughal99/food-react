@@ -3,7 +3,7 @@
     object-fit: cover;
 }
 .restaurant-section .pro-head {
-    padding: 15px 0px;
+    padding: 15px 0;
 }
 
 .restaurant-section img {
@@ -18,6 +18,10 @@
     font-size: 20px;
     margin: 0;
 }
+.restaurant-section h1 {
+    margin-bottom: 30px;
+}
+
 
 .btn-visit {
     background-color: #ff4200 !important;

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { FaMapMarkerAlt } from 'react-icons/fa';
 // import { connect } from "react-redux";
@@ -87,7 +87,7 @@ const Restaurant = () => {
     // };
 
     return (
-        <div>
+        <React.Fragment>
             {/*{*/}
             {/*    selectedLocation ?*/}
             {/*        <div className="map_wrapper">*/}
@@ -141,12 +141,42 @@ const Restaurant = () => {
             {/*}*/}
             <div className={'shops'} >
                 <section className="py-5 restaurant-section">
-                    <div className="row">
-                        <div className="container shops_div">
-                            <h1> All Restaurants </h1>
-                            <div className={"bar-three"}/>
-                            <div className={"bar-four"}/>
-                            <div className="col-md-6 col-lg-4 shop_cart mb-5 ">
+                    <h1 className='text-center'> All Restaurants </h1>
+                    <div className={"bar-three"}/>
+                    <div className={"bar-four"}/>
+                    <div className='container'>
+                        <div className="row justify-content-center">
+                                {/*-------------1--------------*/}
+                                <div className="col-md-4 col-lg-4 shop_cart mb-5 ">
+                                    <img src={ResImg} alt={'pro-img'} />
+                                    <div className="pro-head">
+                                        <div>
+                                            <h3 className="text-left">Pizza Hut</h3>
+                                            {/*<RatingStar value={parseInt(shop.avgRating)} />*/}
+                                            <FaMapMarkerAlt style={{color: "#ff4200"}} />
+                                            <span>Gulshan-e-Maymar</span>
+                                            <hr />
+                                        </div>
+                                        <NavLink to={`/shop`}><button className={'btn btn-visit'}>Visit</button></NavLink>
+                                    </div>
+                                </div>
+                                {/*----------------2-------------------*/}
+                                <div className="col-md-4 col-lg-4 shop_cart mb-5 ">
+                                    <img src={ResImg} alt={'pro-img'} />
+                                    <div className="pro-head">
+                                        <div>
+                                            <h3 className="text-left">Pizza Hut</h3>
+                                            {/*<RatingStar value={parseInt(shop.avgRating)} />*/}
+                                            <FaMapMarkerAlt style={{color: "#ff4200"}} />
+                                            <span>Gulshan-e-Maymar</span>
+                                            <hr />
+                                        </div>
+                                        <NavLink to={`/shop`}><button className={'btn btn-visit'}>Visit</button></NavLink>
+                                    </div>
+                                </div>
+
+                            {/*----------------2-------------------*/}
+                            <div className="col-md-4 col-lg-4 shop_cart mb-5 ">
                                 <img src={ResImg} alt={'pro-img'} />
                                 <div className="pro-head">
                                     <div>
@@ -163,7 +193,7 @@ const Restaurant = () => {
                     </div>
                 </section>
             </div >
-        </div>
+        </React.Fragment>
     )
 }
 export default (Restaurant);

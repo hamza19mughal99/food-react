@@ -4,8 +4,8 @@ import Env from "../../../../assets/img/env.png";
 import User from "../../../../assets/img/user.png";
 import Lock from "../../../../assets/img/lock.png";
 import Phone from "../../../../assets/img/phone.png";
-import { GoogleApiWrapper, Map, Marker } from 'google-maps-react';
-import GooglePlacesAutocomplete, { getLatLng, geocodeByAddress } from 'react-google-places-autocomplete';
+// import { GoogleApiWrapper, Map, Marker } from 'google-maps-react';
+import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
 import "./Register.css";
 import {Spinner} from "react-bootstrap";
 
@@ -27,7 +27,7 @@ const Register = () => {
 
     const [value, setValue] = useState(null);
     const [selectedLocation, setSelectedLocation] = useState(null)
-    const [markerLocation, setMarkerLocation] = useState(null);
+    // const [markerLocation, setMarkerLocation] = useState(null);
 
     const [registrationData, setRegistrationData] = useState({...emptyInput})
     const [errorData, setErrorData] = useState({...emptyInput})
@@ -192,20 +192,20 @@ const Register = () => {
     }
 
 
-    const onMapClickHandler = (t: any, map: any, coord: { latLng: any; }) => {
-        setSelectedLocation(null)
-        const { latLng } = coord;
-        const lat = latLng.lat();
-        const lng = latLng.lng();
-        // setSelectedLocation({
-        //     lat,
-        //     lng
-        // })
-        // setMarkerLocation({
-        //     lat,
-        //     lng
-        // })
-    }
+    // const onMapClickHandler = (t: any, map: any, coord: { latLng: any; }) => {
+    //     setSelectedLocation(null)
+    //     const { latLng } = coord;
+    //     const lat = latLng.lat();
+    //     const lng = latLng.lng();
+    //     // setSelectedLocation({
+    //     //     lat,
+    //     //     lng
+    //     // })
+    //     // setMarkerLocation({
+    //     //     lat,
+    //     //     lng
+    //     // })
+    // }
 
 
 

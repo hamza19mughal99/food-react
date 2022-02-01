@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./RestaurantView.css";
 import Menu from "../Menu/Menu";
 // import { Modal } from "react-bootstrap";
@@ -17,6 +17,8 @@ const RestaurantView = () => {
     // const [category, setCategory] = useState([])
     // const [isOrdered, setIsOrdered] = useState(false)
     // const [allReviews, setAllReviews] = useState([])
+    const [show, setShow] = useState(false)
+
 
     // const [showLocationError, setShowLocationError] = useState(false);
     // const customerToken = localStorage.getItem('token')
@@ -109,7 +111,6 @@ const RestaurantView = () => {
     //     </div>
     // )
 
-    const [show, setShow] = useState(false)
 
     const reviewModalHandler = () => {
         setShow(!show)

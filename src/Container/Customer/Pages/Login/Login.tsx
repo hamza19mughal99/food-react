@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import { NavLink } from "react-router-dom"
 import "./Login.css";
 import {Spinner} from "react-bootstrap"
-import User from "../../../../assets/img/user.png"
 import Lock from "../../../../assets/img/lock.png";
 import Env from "../../../../assets/img/env.png";
 

@@ -3,7 +3,11 @@ import * as MdIcons from "react-icons/md";
 
 
 import Dashboard from "../Pages/Dashboard/Dashboard";
+
 import Category from "../Pages/Category/Category";
+import EditCategory from "../Pages/Category/EditCategory/EditCategory";
+import CreateCategory from "../Pages/Category/CreateCategory/CreateCategory"
+
 import Gallery from "../Pages/Gallery/Gallery";
 import Menu from "../Pages/Menu/Menu";
 import Order from "../Pages/Order/Order";
@@ -34,6 +38,14 @@ export const vendorRoutes: RoutesLink[] = [
     {
         path: '/vendor/category',
         component: <Category />,
+    },
+    {
+        path: '/vendor/edit-category',
+        component: <EditCategory />,
+    },
+    {
+        path: '/vendor/create-category',
+        component: <CreateCategory />,
     },
     {
         path: '/vendor/gallery',

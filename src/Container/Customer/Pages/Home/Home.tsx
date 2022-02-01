@@ -6,7 +6,7 @@ import {useNavigate} from "react-router-dom";
 const Home = () => {
 
     const [value, setValue] = useState(null);
-    const [selectedLocation, setSelectedLocation] = useState(null)
+    // const [selectedLocation, setSelectedLocation] = useState(null)
     const navigation = useNavigate();
 
     const onFormSubmit = (e: { preventDefault: () => void; }) => {
@@ -32,7 +32,6 @@ const Home = () => {
             );
     }
 
-
     // const getCurrentLocation = () => {
     //     navigator.geolocation.getCurrentPosition(function (position) {
     //         axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${position.coords.latitude}, ${position.coords.longitude}&key=${process.env.REACT_APP_GOOGLE_MAP_API}`)
@@ -50,7 +49,6 @@ const Home = () => {
     //
     //     });
     // }
-
 
     return (
         <>
@@ -73,7 +71,7 @@ const Home = () => {
                                 <div className="card form-section-card ">
                                     <form action="" className="" onSubmit={onFormSubmit}>
                                         <div className="main-search-section">
-                                            <div style={{width: "290%", border: "none"}}>
+                                            <div className="main_home_search">
                                                 <GooglePlacesAutocomplete
                                                     autocompletionRequest={{
                                                         bounds: [
@@ -94,16 +92,16 @@ const Home = () => {
                                                     <button type="button" className="btn btn-send btn-block"> Get Current Location </button>
                                                 </div>
                                                 <div className="ml-2">
-                                                    {
-                                                        selectedLocation ?
-                                                            (
-                                                                <button type="submit" className={'btn btn-send btn-block'}>
-                                                                    Search
-                                                                </button>
-                                                            )
-                                                            :
+                                                    {/*{*/}
+                                                    {/*    selectedLocation ?*/}
+                                                    {/*        (*/}
+                                                    {/*            <button type="submit" className={'btn btn-send btn-block'}>*/}
+                                                    {/*                Search*/}
+                                                    {/*            </button>*/}
+                                                    {/*        )*/}
+                                                    {/*        :*/}
                                                             <button type="submit" className={'btn btn-send btn-block'}> Search </button>
-                                                    }
+                                                    {/*}*/}
                                                 </div>
                                             </div>
                                         </div>
