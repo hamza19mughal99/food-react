@@ -90,7 +90,7 @@ function App() {
                   <Route path={'/login'} element={<CustomerLogin />}  />
                   <Route path={'/vendor/register'} element={<VendorRegister />}/>
                   <Route path={'/vendor/login'} element={<VendorLogin />} />
-                  <Route path={'/create-shop'} element={<ShopCreate />} />
+                  <Route path={'/shop-create'} element={<ShopCreate />} />
                   <Route path={'/forget-password'} element={<ForgetPassword />}/>
                   <Route path={'/reset-password/:id'} element={<ResetPassword />}/>
                   <Route path={'/stripe'} element={<Stripe />}/>

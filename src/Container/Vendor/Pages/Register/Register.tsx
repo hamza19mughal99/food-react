@@ -5,6 +5,7 @@ import Env from "../../../../assets/img/env.png";
 import User from "../../../../assets/img/user.png";
 import Lock from "../../../../assets/img/lock.png";
 import Phone from "../../../../assets/img/phone.png";
+import {useNavigate} from "react-router-dom";
 import "./Register.css";
 
 export interface FormInput {
@@ -16,6 +17,7 @@ export interface FormInput {
 
 const Register = () => {
 
+    const navigate = useNavigate();
     const emptyInput: FormInput = {
         name: '',
         email: '',
@@ -145,6 +147,8 @@ const Register = () => {
         setError('');
         if(validate()) {
             console.log(formInput)
+            navigate('/shop-create')
+
         }
         else{
             setLoader(false);

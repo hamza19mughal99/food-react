@@ -3,10 +3,8 @@ import "./RestaurantView.css";
 import Menu from "../Menu/Menu";
 // import { Modal } from "react-bootstrap";
 import { FaMapMarkerAlt } from 'react-icons/fa';
-// import RatingStar from "../../../../lib/customer/RatingStar/RatingStar";
-// import ApiError from "../../../../lib/ApiError/ApiError"
-// import Loader from "../../../../lib/customer/Loader/Loader";
 // import {NavLink} from "react-router-dom";
+import RatingStar from "../../../../../lib/RatingStar/RatingStar";
 import MainImg from "../../../../../assets/img/res2.png";
 
 const RestaurantView = () => {
@@ -170,9 +168,7 @@ const RestaurantView = () => {
                     <div className="bar-view2"/>
                 </div>
                 <div className={'d-flex'}>
-                    {/*<div>*/}
-                    {/*    <RatingStar  value={parseInt(props.shop.avgRating)} />*/}
-                    {/*</div>*/}
+                    <RatingStar />
                     <div className={'ml-2 mt-1 review-tag'}>
                         <p onClick={reviewModalHandler}> Check Reviews </p>
                     </div>

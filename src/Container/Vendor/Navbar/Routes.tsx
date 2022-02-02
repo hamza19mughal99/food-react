@@ -9,7 +9,11 @@ import EditCategory from "../Pages/Category/EditCategory/EditCategory";
 import CreateCategory from "../Pages/Category/CreateCategory/CreateCategory"
 
 import Gallery from "../Pages/Gallery/Gallery";
+
 import Menu from "../Pages/Menu/Menu";
+import CreateMenu from "../Pages/Menu/CreateMenu/CreateMenu";
+import EditMenu from "../Pages/Menu/EditMenu/EditMenu";
+
 import Order from "../Pages/Order/Order";
 import Reviews from "../Pages/Reviews/Reviews";
 import Setting from "../Pages/Setting/Setting";
@@ -54,6 +58,14 @@ export const vendorRoutes: RoutesLink[] = [
     {
         path: '/vendor/menu',
         component: <Menu />,
+    },
+    {
+        path: '/vendor/create-menu',
+        component: <CreateMenu />,
+    },
+    {
+        path: '/vendor/edit-menu',
+        component: <EditMenu />,
     },
     {
         path: '/vendor/order',

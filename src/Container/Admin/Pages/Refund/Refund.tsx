@@ -34,7 +34,7 @@ const Refund = () => {
 
     return (
         <div className={'page_responsive'}>
-            <MuiDataTable data={tableData} columns={columns} />
+            <MuiDataTable title={'Refund List'} data={tableData} columns={columns} />
         </div>
     );
 };

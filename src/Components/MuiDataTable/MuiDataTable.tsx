@@ -2,7 +2,7 @@ import React from 'react';
 import MUIDataTable, {FilterType} from "mui-datatables";
 
 // @ts-ignore
-const MuiDataTable = ({data, columns}) => {
+const MuiDataTable = ({data, columns, title}) => {
 
     const options: FilterType | any  = {
         filter: false,
@@ -20,7 +20,7 @@ const MuiDataTable = ({data, columns}) => {
     return (
         <div>
             <MUIDataTable
-                title={"Customer List"}
+                title={title}
                 data={data}
                 columns={columns}
                 options={options}

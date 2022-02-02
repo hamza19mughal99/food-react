@@ -1,21 +1,56 @@
 import React, { useState } from 'react';
 import { Card, Col, Form, Row } from "react-bootstrap";
-// import ReactQuill from 'react-quill';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 // import GooglePlacesAutocomplete, { getLatLng, geocodeByAddress } from 'react-google-places-autocomplete';
 // import {GoogleApiWrapper, Map, Marker} from 'google-maps-react';
 import {Switch} from "@material-ui/core";
 
 const Settings = () => {
 
-    // const [value, setValue] = useState(null);
     const [shop, setShop] = useState({});
-    // const [pageLoader, setPageLoader] = useState(false);
-    // const [isApiError, setIsApiError] = useState(false)
     // const [selectedLocation, setSelectedLocation] = useState(null)
     // const [markerLocation, setMarkerLocation] = useState(null);
     const [errorMessage, setErrorMessage] = useState('');
-    // const token = localStorage.getItem('vendorToken');
 
+    const modules = {
+        toolbar: [
+            [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+            [{ 'font': [] }],
+            ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+            [{ 'list': 'ordered' }, { 'list': 'bullet' }, { 'indent': '-1' }, { 'indent': '+1' }],
+            ['link', 'image'],
+            ['clean'],
+            [{ 'align': [] }],
+            ['code-block']
+        ],
+    };
+    const formats = [
+        'header',
+        'font',
+        'bold', 'italic', 'underline', 'strike', 'blockquote',
+        'list', 'bullet', 'indent',
+        'link', 'image', 'align',
+        'code-block'
+    ];
+    const onSubmit = (e: { preventDefault: () => void; }) => {
+        e.preventDefault();
+        window.location.reload();
+    }
+
+    const onChangeHandler = (e: { target: { value: any; name: any; }; }) => {
+        const value = e.target.value;
+        setShop({
+            ...shop,
+            [e.target.name]: value
+        })
+    }
+    const editorChangeHandler = (val: any) => {
+        setShop({
+            ...shop,
+            description: val
+        })
+    }
 
     // const onPlaceSearch =  (val) => {
     //     setSelectedLocation(null)
@@ -33,91 +68,6 @@ const Settings = () => {
     //                 })
     //             }
     //         );
-    // }
-
-
-
-    // const modules = {
-    //     toolbar: [
-    //         [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-    //         [{ 'font': [] }],
-    //         ['bold', 'italic', 'underline', 'strike', 'blockquote'],
-    //         [{ 'list': 'ordered' }, { 'list': 'bullet' }, { 'indent': '-1' }, { 'indent': '+1' }],
-    //         ['link', 'image'],
-    //         ['clean'],
-    //         [{ 'align': [] }],
-    //         ['code-block']
-    //     ],
-    // };
-    // const formats = [
-    //     'header',
-    //     'font',
-    //     'bold', 'italic', 'underline', 'strike', 'blockquote',
-    //     'list', 'bullet', 'indent',
-    //     'link', 'image', 'align',
-    //     'code-block'
-    // ];
-
-    // useEffect(() => {
-    //     axios.get('/vendor/shop', { headers: { "Authorization": `Bearer ${token}` } })
-    //         .then((res) => {
-    //             setShop(res.data);
-    //             setSelectedLocation({
-    //                 lat: res.data.location.coordinates[0],
-    //                 lng: res.data.location.coordinates[1]
-    //             })
-    //         })
-    //         .catch((err) => {
-    //             setIsApiError(true)
-    //         })
-    // }, [])
-
-
-    const onSubmit = (e: { preventDefault: () => void; }) => {
-        e.preventDefault();
-        // setPageLoader(true);
-        // const formData = {
-            // shopName: shop.shopName,
-            // description: shop.description,
-            // pickUp: shop.pickUp,
-            // delivery: shop.delivery,
-            // shopVisibility: shop.shopVisibility,
-            // address: shop.address,
-            // location: JSON.stringify(selectedLocation),
-        // }
-
-        // if (!shop.pickUp && !shop.delivery) {;
-        //     setErrorMessage('Please select atleast one option')
-        //     setPageLoader(false);
-        //
-        // }
-        // else  {
-        //     if (isValid) {
-        //         axios.put('/vendor/shop', formData, { headers: { "Authorization": `Bearer ${token}` } })
-        //             .then((res) => {
-        //                 vendorShopSetting(addToast)
-        //                 setPageLoader(false)
-        //                 window.location.reload();
-        //             })
-        //             .catch((err) => {
-        //                 setIsApiError(true)
-        //             })
-        //     }
-        // }
-
-    }
-    const onChangeHandler = (e: { target: { value: any; name: any; }; }) => {
-        const value = e.target.value;
-        setShop({
-            ...shop,
-            [e.target.name]: value
-        })
-    }
-    // const editorChangeHandler = (val: any) => {
-    //     setShop({
-    //         ...shop,
-    //         description: val
-    //     })
     // }
 
     // const getCurrentLocation = () => {
@@ -149,13 +99,6 @@ const Settings = () => {
     //     })
     // }
 
-    // let loader = (
-    //     <div>
-    //         <p>Loading...</p>
-    //     </div>
-    // )
-
-
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setErrorMessage('')
         const { checked } = e.target
@@ -179,9 +122,7 @@ const Settings = () => {
             <div id="settings" className={'p-5'}>
                 <h3 className={'text-center'}> Your Shop</h3>
                 <Row className={'justify-content-center'}>
-                    <Col md={8}>
-                        {/*{*/}
-                        {/*    shop ?*/}
+                    <Col md={10}>
                                 <Form onSubmit={onSubmit}>
                                     <Card>
                                         <Card.Body>
@@ -191,10 +132,10 @@ const Settings = () => {
                                                               name="shopName"
                                                               value={'Pizza Hut'} onChange={onChangeHandler} required />
                                             </Form.Group>
-                                            {/*<Form.Group className={'py-3'}>*/}
-                                            {/*    <Form.Label> Shop Description </Form.Label>*/}
-                                            {/*    <ReactQuill onChange={editorChangeHandler} value={'Best Pizza'} modules={modules} formats={formats} placeholder="Leave Your Description" />*/}
-                                            {/*</Form.Group>*/}
+                                            <Form.Group className={'py-3'}>
+                                                <Form.Label> Shop Description </Form.Label>
+                                                <ReactQuill onChange={editorChangeHandler} modules={modules} formats={formats} placeholder="Leave Your Description" />
+                                            </Form.Group>
                                             <Form.Group>
                                                 <Form.Label htmlFor="name">Shop Visibility</Form.Label> <br />
                                                 <span style={{ fontWeight: "bold" }}> OFF </span>
@@ -292,21 +233,10 @@ const Settings = () => {
                                         </Card.Body>
                                     </Card>
 
-
-                                    <div className={'text-center'}>
-                                        {/*{*/}
-                                        {/*    isValid ?*/}
-                                        {/*        !pageLoader ?*/}
-                                        {/*            <button className={'btn btn-send btn-block px-4'} type={'submit'}>Save</button>*/}
-                                        {/*            : loader*/}
-                                        {/*        : 	*/}
-                                        <button className={'btn btn-send btn-block px-4'} disabled type={'button'}>Save</button>
-
-                                        {/*}*/}
+                                    <div className={'text-center mb-3'}>
+                                        <button className={'btn btn-send btn-block px-4'} type={'button'}>Save</button>
                                     </div>
                                 </Form>
-                                {/*: loader*/}
-                        {/*}*/}
                     </Col>
                 </Row>
             </div>

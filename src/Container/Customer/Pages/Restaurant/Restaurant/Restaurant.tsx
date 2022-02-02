@@ -1,12 +1,9 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { FaMapMarkerAlt } from 'react-icons/fa';
-// import { connect } from "react-redux";
-// import { fetchShops } from "../../../../Store/customer/actions/index";
-// import Loader from "../../../../lib/customer/Loader/Loader";
 // import { Map, GoogleApiWrapper, Marker } from "google-maps-react";
-// import InfoWindowEx from "../../../../lib/customer/InfoWindow/InfoWindow";
 // import RatingStar from "../../../../lib/customer/RatingStar/RatingStar";
+import RatingStar from "../../../../../lib/RatingStar/RatingStar";
 import ResImg from "../../../../../assets/img/res2.png"
 import './Restaurant.css';
 
@@ -14,20 +11,6 @@ const Restaurant = () => {
 
     // const [selectedLocation, setSelectedLocation] = useState(null);
     // const [marker, setMarker] = useState({});
-    // const [selectedShop, setSelectedShop] = useState(null);
-    // const [infoShow, setInfoShow] = useState(false);
-
-
-    // useEffect(() => {
-    //     const latitudeQueryString = new URLSearchParams(props.location.search).get('latitude')
-    //     const longitudeQueryString = new URLSearchParams(props.location.search).get('longitude')
-    //     setSelectedLocation({
-    //         lat: latitudeQueryString,
-    //         lng: longitudeQueryString
-    //     })
-    //     props.getAllStore(latitudeQueryString, longitudeQueryString);
-    //     window.scrollTo(0, 0)
-    // }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
 
     // const onMarkerClick = (props, marker, shop) => {
@@ -36,24 +19,12 @@ const Restaurant = () => {
     //     setInfoShow(true);
     // }
 
-
     // let restaurant = (
     //     <div className={'text-center'}>
     //         <Loader />
     //     </div>
     // )
 
-    // let restaurant;
-    //
-    // if (props.shops && props.shops.length === 0) {
-    //     restaurant = (
-    //         <div style={{ height: '100vh' }} className="col-md-12 col-lg-4" >
-    //             <p className={'text-center mt-5'}>No Restaurant Found</p>
-    //         </div>
-    //     )
-    // }
-    //
-    // let iconColor = { color: '#ff4200' }
     //
     // if (props.shops && props.shops.length > 0) {
     //     restaurant = (
@@ -152,7 +123,7 @@ const Restaurant = () => {
                                     <div className="pro-head">
                                         <div>
                                             <h3 className="text-left">Pizza Hut</h3>
-                                            {/*<RatingStar value={parseInt(shop.avgRating)} />*/}
+                                            <RatingStar />
                                             <FaMapMarkerAlt style={{color: "#ff4200"}} />
                                             <span>Gulshan-e-Maymar</span>
                                             <hr />
@@ -166,7 +137,7 @@ const Restaurant = () => {
                                     <div className="pro-head">
                                         <div>
                                             <h3 className="text-left">Pizza Hut</h3>
-                                            {/*<RatingStar value={parseInt(shop.avgRating)} />*/}
+                                            <RatingStar />
                                             <FaMapMarkerAlt style={{color: "#ff4200"}} />
                                             <span>Gulshan-e-Maymar</span>
                                             <hr />
@@ -181,7 +152,7 @@ const Restaurant = () => {
                                 <div className="pro-head">
                                     <div>
                                         <h3 className="text-left">Pizza Hut</h3>
-                                        {/*<RatingStar value={parseInt(shop.avgRating)} />*/}
+                                        <RatingStar />
                                         <FaMapMarkerAlt style={{color: "#ff4200"}} />
                                         <span>Gulshan-e-Maymar</span>
                                         <hr />

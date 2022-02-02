@@ -20,13 +20,13 @@ const VendorView = () => {
         'ShopAddress',
         'Status',
         {
-            name: "Close Rental",
+            name: "Actions",
             options: {
                 display: key === 'AllVendors',
                 customBodyRender: (value: any, tableMeta: any, updateValue: any) => {
                     return (
                         <button className={'action close_action'}>
-                            <AiIcons.AiOutlineIssuesClose />
+                            <AiIcons.AiFillCheckSquare />
                         </button>
                     )
                 }
@@ -35,13 +35,13 @@ const VendorView = () => {
     ];
 
     const VendorData = [
-        { id: 1, customerName: "hamza mughal", email: "hamza@gmail.com", shopAdd: "R-120", phone: "03492496204"},
-        { id: 2, customerName: "Obaid Aqeel",  email: "hamza@gmail.com", shopAdd: "R-120", phone: "03492496204"},
-        { id: 3, customerName: "hamza mughal", email: "hamza@gmail.com", shopAdd: "R-120", phone: "03492496204"},
-        { id: 4, customerName: "hamza mughal", email: "hamza@gmail.com", shopAdd: "R-120", phone: "03492496204"},
-        { id: 5, customerName: "hamza mughal", email: "hamza@gmail.com", shopAdd: "R-120", phone: "03492496204"},
-        { id: 6, customerName: "hamza mughal", email: "hamza@gmail.com", shopAdd: "R-120", phone: "03492496204"},
-        { id: 7, customerName: "hamza mughal", email: "hamza@gmail.com", shopAdd: "R-120", phone: "03492496204"},
+        { id: 1, customerName: "hamza mughal", email: "hamza@gmail.com", shopAdd: "R-120", phone: "03492496204", status: "Active"},
+        { id: 2, customerName: "Obaid Aqeel",  email: "hamza@gmail.com", shopAdd: "R-120", phone: "03492496204", status: "Active"},
+        { id: 3, customerName: "hamza mughal", email: "hamza@gmail.com", shopAdd: "R-120", phone: "03492496204", status: "Active"},
+        { id: 4, customerName: "hamza mughal", email: "hamza@gmail.com", shopAdd: "R-120", phone: "03492496204", status: "Active"},
+        { id: 5, customerName: "hamza mughal", email: "hamza@gmail.com", shopAdd: "R-120", phone: "03492496204", status: "Active"},
+        { id: 6, customerName: "hamza mughal", email: "hamza@gmail.com", shopAdd: "R-120", phone: "03492496204", status: "Active"},
+        { id: 7, customerName: "hamza mughal", email: "hamza@gmail.com", shopAdd: "R-120", phone: "03492496204", status: "Active"},
     ]
 
     let tableData = VendorData.map((val) => {
@@ -51,6 +51,7 @@ const VendorView = () => {
             email: val.email,
             shopAdd: val.shopAdd,
             phone: val.phone,
+            status: val.status,
         })
     })
 
@@ -66,13 +67,13 @@ const VendorView = () => {
                 className="mb-3 tabs"
             >
                 <Tab eventKey="AllVendors" title="All Vendors" className={'w-100'}>
-                    <MuiDataTable data={tableData} columns={columns} />
+                    <MuiDataTable title="All Vendors" data={tableData} columns={columns} />
                 </Tab>
                 <Tab eventKey="ActiveVendors" title='Active Vendors' className={'w-100'}>
-                    <MuiDataTable data={tableData} columns={columns} />
+                    <MuiDataTable title="Active Vendors" data={tableData} columns={columns} />
                 </Tab>
                 <Tab eventKey="InActiveVendors" title='In-Active Vendors' className={'w-100'}>
-                    <MuiDataTable data={tableData} columns={columns} />
+                    <MuiDataTable title="In-Active Vendors" data={tableData} columns={columns} />
                 </Tab>
             </Tabs>
 

@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { NavLink } from 'react-router-dom';
-import Img from "../../../../../assets/img/logo.png";
+import burger2 from "../../../../../assets/img/burger2.jpg";
 import { FiShoppingCart } from 'react-icons/fi';
 import {Tab, Tabs, Row, Col, Container, Modal} from "react-bootstrap";
 import "./Menu.css";
@@ -56,6 +56,40 @@ const Menu = () => {
                     <Tab eventKey="All" title="All" className={'w-100'}>
                         <Container>
                             <Row>
+                                <Col md={6} className={'mt-5 mb-5'}>
+                                    <Row className="column-change mr-1">
+                                        <Col md={7}>
+                                            <div className="mt-2">
+                                                <div className="d-flex justify-content-between">
+                                                    <h5>Zinger Burger</h5>
+                                                    <p style={{ backgroundColor: "#fafafa" }} > Halal </p>
+                                                    <p style={{ backgroundColor: "#fafafa" }}>3:00</p>
+
+                                                </div>
+                                                <hr />
+                                                <p className={'mt-3'}>£ 20</p>
+                                                <div className={'d-flex'}>
+                                                    <div>
+                                                        <button className={' btn-send '}>ADD TO CART</button>
+                                                    </div>
+                                                    <div>
+                                                        <button
+                                                            className={' btn-send ml-2'}
+                                                            onClick={() => setShow(true)}
+                                                        >
+                                                            ALLERGY INFO.
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </Col>
+                                        <Col md={5} >
+                                            <div className={'menu_img'}>
+                                                <img className="pt-3" alt={'img'} style={{ width: "100%" }} src={burger2} />
+                                            </div>
+                                        </Col>
+                                    </Row>
+                                </Col>
                                 <Col md={6} className={'mt-5'}>
                                     <Row className="column-change mr-1">
                                         <Col md={7}>
@@ -85,7 +119,7 @@ const Menu = () => {
                                         </Col>
                                         <Col md={5} >
                                             <div className={'menu_img'}>
-                                                <img className="pt-3" alt={'img'} style={{ width: "100%" }} src={Img} />
+                                                <img className="pt-3" alt={'img'} style={{ width: "100%" }} src={burger2} />
                                             </div>
                                         </Col>
                                     </Row>
@@ -95,22 +129,164 @@ const Menu = () => {
                     </Tab>
 
                     <Tab eventKey="Cookies" title="Cookies" className={'w-100'}>
+                        <Container>
+                            <Row>
+                                <Col md={6} className={'mt-5 mb-5'}>
+                                    <Row className="column-change mr-1">
+                                        <Col md={7}>
+                                            <div className="mt-2">
+                                                <div className="d-flex justify-content-between">
+                                                    <h5>Zinger Burger</h5>
+                                                    <p style={{ backgroundColor: "#fafafa" }} > Halal </p>
+                                                    <p style={{ backgroundColor: "#fafafa" }}>3:00</p>
 
+                                                </div>
+                                                <hr />
+                                                <p className={'mt-3'}>£ 20</p>
+                                                <div className={'d-flex'}>
+                                                    <div>
+                                                        <button className={' btn-send '}>ADD TO CART</button>
+                                                    </div>
+                                                    <div>
+                                                        <button
+                                                            className={' btn-send ml-2'}
+                                                            onClick={() => setShow(true)}
+                                                        >
+                                                            ALLERGY INFO.
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </Col>
+                                        <Col md={5} >
+                                            <div className={'menu_img'}>
+                                                <img className="pt-3" alt={'img'} style={{ width: "100%" }} src={burger2} />
+                                            </div>
+                                        </Col>
+                                    </Row>
+                                </Col>
+                            </Row>
+                        </Container>
                     </Tab>
 
                     <Tab eventKey="FastFood" title="FastFood" className={'w-100'}>
+                        <Container>
+                            <Row>
+                                <Col md={6} className={'mt-5 mb-5'}>
+                                    <Row className="column-change mr-1">
+                                        <Col md={7}>
+                                            <div className="mt-2">
+                                                <div className="d-flex justify-content-between">
+                                                    <h5>Zinger Burger</h5>
+                                                    <p style={{ backgroundColor: "#fafafa" }} > Halal </p>
+                                                    <p style={{ backgroundColor: "#fafafa" }}>3:00</p>
 
+                                                </div>
+                                                <hr />
+                                                <p className={'mt-3'}>£ 20</p>
+                                                <div className={'d-flex'}>
+                                                    <div>
+                                                        <button className={' btn-send '}>ADD TO CART</button>
+                                                    </div>
+                                                    <div>
+                                                        <button
+                                                            className={' btn-send ml-2'}
+                                                            onClick={() => setShow(true)}
+                                                        >
+                                                            ALLERGY INFO.
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </Col>
+                                        <Col md={5} >
+                                            <div className={'menu_img'}>
+                                                <img className="pt-3" alt={'img'} style={{ width: "100%" }} src={burger2} />
+                                            </div>
+                                        </Col>
+                                    </Row>
+                                </Col>
+                                <Col md={6} className={'mt-5'}>
+                                    <Row className="column-change mr-1">
+                                        <Col md={7}>
+                                            <div className="mt-2">
+                                                <div className="d-flex justify-content-between">
+                                                    <h5>Zinger Burger</h5>
+                                                    <p style={{ backgroundColor: "#fafafa" }} > Halal </p>
+                                                    <p style={{ backgroundColor: "#fafafa" }}>3:00</p>
+
+                                                </div>
+                                                <hr />
+                                                <p className={'mt-3'}>£ 20</p>
+                                                <div className={'d-flex'}>
+                                                    <div>
+                                                        <button className={' btn-send '}>ADD TO CART</button>
+                                                    </div>
+                                                    <div>
+                                                        <button
+                                                            className={' btn-send ml-2'}
+                                                            onClick={() => setShow(true)}
+                                                        >
+                                                            ALLERGY INFO.
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </Col>
+                                        <Col md={5} >
+                                            <div className={'menu_img'}>
+                                                <img className="pt-3" alt={'img'} style={{ width: "100%" }} src={burger2} />
+                                            </div>
+                                        </Col>
+                                    </Row>
+                                </Col>
+                            </Row>
+                        </Container>
                     </Tab>
 
                     <Tab eventKey="BBQ" title="BBQ" className={'w-100'}>
+                        <Container>
+                            <Row>
+                                <Col md={6} className={'mt-5 mb-5'}>
+                                    <Row className="column-change mr-1">
+                                        <Col md={7}>
+                                            <div className="mt-2">
+                                                <div className="d-flex justify-content-between">
+                                                    <h5>Zinger Burger</h5>
+                                                    <p style={{ backgroundColor: "#fafafa" }} > Halal </p>
+                                                    <p style={{ backgroundColor: "#fafafa" }}>3:00</p>
 
+                                                </div>
+                                                <hr />
+                                                <p className={'mt-3'}>£ 20</p>
+                                                <div className={'d-flex'}>
+                                                    <div>
+                                                        <button className={' btn-send '}>ADD TO CART</button>
+                                                    </div>
+                                                    <div>
+                                                        <button
+                                                            className={' btn-send ml-2'}
+                                                            onClick={() => setShow(true)}
+                                                        >
+                                                            ALLERGY INFO.
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </Col>
+                                        <Col md={5} >
+                                            <div className={'menu_img'}>
+                                                <img className="pt-3" alt={'img'} style={{ width: "100%" }} src={burger2} />
+                                            </div>
+                                        </Col>
+                                    </Row>
+                                </Col>
+
+                            </Row>
+                        </Container>
                     </Tab>
-
-
                 </Tabs>
             </div>
-
-
         </React.Fragment>
     );
 };

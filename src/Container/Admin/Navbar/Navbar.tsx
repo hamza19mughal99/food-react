@@ -3,13 +3,14 @@ import { Link, useLocation } from "react-router-dom";
 import * as FaIcons from "react-icons/fa";
 import * as FiIcons from "react-icons/fi";
 import * as IoIcons from 'react-icons/io';
+import {useNavigate} from "react-router-dom";
 import DashboardLogo from "../../../assets/img/dashboard-logo.png";
 import { adminSideBarItems, SideBarRoutes } from "./Routes";
 import './Navbar.css';
 import { Collapse } from "@mui/material";
 
 const NavBar = () => {
-
+    const navigate = useNavigate();
     const location = useLocation();
     const [sideBar, setSideBar] = useState(false)
     const showSideBar = () => setSideBar(!sideBar);
@@ -17,7 +18,7 @@ const NavBar = () => {
 
     const onLogOutHandler = () => {
         localStorage.clear();
-        window.location.reload();
+        navigate('/')
     }
 
     const classes = (path: string) => {

@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom"
 import "./Login.css";
 import {Spinner} from "react-bootstrap"
 import Lock from "../../../../assets/img/lock.png";
+import {useNavigate} from "react-router-dom";
 import Env from "../../../../assets/img/env.png";
 
 export interface FormInput {
@@ -16,7 +17,7 @@ const Login = () => {
         email: '',
         password: '',
     }
-
+    const navigate = useNavigate();
     const [loginData, setLoginData] = useState({...emptyInput})
     const [loader, setLoader] = useState<boolean>(false);
     const [error, setError] = useState<string>('')
@@ -93,6 +94,7 @@ const Login = () => {
 
         if(validate()){
             console.log(formData)
+            navigate('/')
         }
         else{
             setLoader(false);

@@ -7,6 +7,7 @@ import Phone from "../../../../assets/img/phone.png";
 // import { GoogleApiWrapper, Map, Marker } from 'google-maps-react';
 import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
 import "./Register.css";
+import {useNavigate} from "react-router-dom";
 import {Spinner} from "react-bootstrap";
 
 export interface FormInput {
@@ -25,6 +26,7 @@ const Register = () => {
         password: '',
     }
 
+    const navigate = useNavigate();
     const [value, setValue] = useState(null);
     const [selectedLocation, setSelectedLocation] = useState(null)
     // const [markerLocation, setMarkerLocation] = useState(null);
@@ -151,6 +153,8 @@ const Register = () => {
         setError('');
         if(validate()) {
             console.log(formInput)
+            navigate('/')
+
         }
         else{
             setLoader(false);

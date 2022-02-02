@@ -31,7 +31,7 @@ const CustomerView = () => {
 
     return (
         <div className={'page_responsive'}>
-            <MuiDataTable data={tableData} columns={columns} />
+            <MuiDataTable title="Customer List" data={tableData} columns={columns} />
         </div>
     );
 };
