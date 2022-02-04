@@ -1,39 +1,37 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {useNavigate} from "react-router-dom";
 import {Form, InputGroup, FormControl} from "react-bootstrap";
+import {useForm} from "react-hook-form";
+import { categoryValidation } from '../../../../../Components/Validations/Validation';
+
+export interface CategoryInput {
+    categoryName: string,
+}
 
 const CreateCategory = () => {
     const navigate = useNavigate();
+    const { register, handleSubmit, formState: { errors } } = useForm<CategoryInput>();
 
-    const [category, setCategory] = useState({})
-
-    const addCategoryHandler = (e: { target: { name: any; value: any; }; }) => {
-        const {name, value} = e.target;
-        setCategory({
-            ...category,
-            [name]: value
-        })
-    }
-
-    const categorySubmitHandler = (e: { preventDefault: () => void; }) =>{
-        e.preventDefault();
+    const categoryDataSubmit = handleSubmit((data) => {
+        console.log(data)
         navigate('/vendor/category')
-    }
+
+    });
 
     return (
         <div className={'page_responsive'}>
             <h2>Create Category</h2>
 
             <div className={'mt-5'}>
-                <Form onSubmit={categorySubmitHandler}>
+                <Form onSubmit={categoryDataSubmit}>
                     <InputGroup className="mb-3">
                         <FormControl
-                            name={'category'}
-                            required
-                            onChange={addCategoryHandler}
+                            {...register("categoryName", categoryValidation.categoryName)}
                             placeholder={'Enter a Category Name'}
                         />
                     </InputGroup>
+                    <p className={"error_input_message"}>{errors.categoryName?.message}</p>
+
                     <button type="submit" className={'btn btn-send btn-block px-4'}>Create Category</button>
                 </Form>
             </div>

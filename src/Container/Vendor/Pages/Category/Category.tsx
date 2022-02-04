@@ -84,7 +84,7 @@ const Category = () => {
     return (
         <div className={'page_responsive'}>
             <div className={'d-flex justify-content-end'}>
-                <button className={'btn-send px-4 mr-2'} onClick={addCategoryHandler}>Add Category</button>
+                <button className={'btn-send px-4 mr-2 mb-4'} onClick={addCategoryHandler}>Add Category</button>
             </div>
 
             <div>

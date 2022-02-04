@@ -1,97 +1,29 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Form, Row, Col} from 'react-bootstrap';
 import {useNavigate} from "react-router-dom";
+import { useForm, Controller } from 'react-hook-form';
+import { menuValidation } from '../../../../../Components/Validations/Validation';
 import Select from 'react-select';
 import "../Menu.css";
+
+export interface MenuInput {
+    productName: string,
+    productPrice: number,
+    hour: number,
+    minute: number,
+    allergyInfo: string
+}
 
 const CreateMenu = () => {
     const navigate = useNavigate();
 
-    const [error, setError] = useState('')
-    const [formInput, setFormInput] = useState({
-        productName: '',
-        productPrice: 0,
-        hour: 0,
-        min: 0,
-        allergyInfo: '',
-    })
-    const [formInputError, setFormInputError] = useState({
-        productName: '',
-        productPrice: '',
-        hour: '',
-        min: '',
-        allergyInfo: ''
-    })
+	const { register, handleSubmit, formState: { errors }, control } = useForm();
 
-    const changeInputHandler = (e: { target: { name: any; value: any; }; }) => {
-        const {name, value} = e.target;
-        setError('');
-        setFormInputError({
-            ...formInputError,
-            [name]: ''
-        })
-        setFormInput({
-            ...formInput,
-            [name]: value
-        })
-    }
+    const menuDataSubmit = handleSubmit((data) => {
+        console.log(data)
+        navigate('/vendor/menu')
 
-    const validation = () => {
-        let errors = {
-            productName: '',
-            productPrice: '',
-            hour: '',
-            min: '',
-            allergyInfo: ''
-        }
-        let formIsValid = true;
-
-        // @ts-ignore
-        if(parseInt(formInput["productPrice"]) <= 0){
-            formIsValid = false;
-            errors["productPrice"] = "Price must be greater than zero.";
-        }
-        // @ts-ignore
-        if(parseInt(formInput["hour"]) === 0 && parseInt(formInput["min"]) === 0){
-            formIsValid = false;
-            errors["hour"] = "hours and min can neither be zero";
-        }
-        // @ts-ignore
-        if(parseInt(formInput["hour"]) < 0){
-            formIsValid = false;
-            errors["hour"] = "Hours must be greater than zero";
-        }
-        // @ts-ignore
-        if(parseInt(formInput["hour"]) > 24 ){
-            formIsValid = false;
-            errors["hour"] = "Hours must be between 0 and 24";
-        }
-        // @ts-ignore
-        if(parseInt(formInput["min"]) < 0){
-            formIsValid = false;
-            errors["hour"] = "Minutes must be greater than zero";
-        }
-        // @ts-ignore
-        if(parseInt(formInput["min"]) >= 59 ){
-            formIsValid = false;
-            errors["min"] = "Minutes must be between 0 and 59";
-        }
-        setFormInputError({...errors});
-        return formIsValid
-    }
-
-    const errorElement = (msg: {} | null | undefined) => {
-        return <p className={'m-0 p-0 error'}>{msg}</p>
-    }
-
-    const onFormSubmit = (e: { preventDefault: () => void; }) => {
-        e.preventDefault();
-        // setSubmitLoader(true)
-        setError('');
-        if(validation()){
-            navigate('/vendor/menu')
-        }
-    }
+    });
 
     const categoryOptions = [
         { value: 'FastFood', label: 'FastFood' },
@@ -111,31 +43,29 @@ const CreateMenu = () => {
     return (
         <div className={'page_responsive'}>
             <h3>Create Menu</h3>
-            <p>{error} </p>
             <div className={'mt-5'}>
                 <Row className={'justify-content-center'}>
                     <Col md={10} className={'create_menu'}>
-                        <Form onSubmit={onFormSubmit}>
+                        <Form onSubmit={menuDataSubmit}>
                             <Form.Group className="mb-3" controlId="formBasicEmail">
                                 <Form.Label>Product Name</Form.Label>
                                 <Form.Control
                                     type="text"
-                                    name="productName"
-                                    required
-                                    onChange={changeInputHandler}
+                                    {...register("productName", menuValidation.productName)}
                                     placeholder="Product Name" />
+                                    <Form.Text className="text-muted">
+                                    <p className={"error_input_message"}>{errors.productName?.message}</p>
+                                </Form.Text>
                             </Form.Group>
 
                             <Form.Group className="mb-3" controlId="formBasicEmail">
                                 <Form.Label>Product Price £</Form.Label>
                                 <Form.Control
                                     type="number"
-                                    name="productPrice"
-                                    required
-                                    onChange={changeInputHandler}
+                                    {...register("productPrice", menuValidation.productPrice)}
                                     placeholder="Product Price £" />
                                 <Form.Text className="text-muted">
-                                    {errorElement(formInputError.productPrice)}
+                                <p className={"error_input_message"}>{errors.productPrice?.message}</p>
                                 </Form.Text>
                             </Form.Group>
 
@@ -144,58 +74,81 @@ const CreateMenu = () => {
                                 <div className={'d-flex'}>
                                     <Form.Control
                                         type="number"
-                                        name="hour"
-                                        required
-                                        onChange={changeInputHandler}
+                                        {...register("hour", menuValidation.hour)}
                                         placeholder="Hour" />
                                     <Form.Control
                                         type="number"
-                                        name="min"
-                                        required
-                                        onChange={changeInputHandler}
+                                        {...register("minute", menuValidation.minute)}
                                         placeholder="Minute" />
 
                                 </div>
                                 <div className={'d-flex justify-content-between'}>
                                     <Form.Text className="text-muted">
-                                        {errorElement(formInputError.hour)}
+                                    <p className={"error_input_message"}>{errors.hour?.message}</p>
                                     </Form.Text>
                                     <Form.Text className="text-muted">
-                                        {errorElement(formInputError.min)}
+                                    <p className={"error_input_message"}>{errors.minute?.message}</p>
                                     </Form.Text>
                                 </div>
                             </Form.Group>
 
                             <Form.Group className="mb-3">
                                 <Form.Label>Category</Form.Label>
-                                <Select options={categoryOptions} />
+                                <Controller
+									name="category"
+									control={control}
+									render={({ field: { value, onChange, ref } }) => (
+                                        <Select options={categoryOptions} 
+                                        value={value}
+									    onChange={onChange}
+                                        />
+									)}
+								/>
                             </Form.Group>
 
                             <Form.Group className="mb-3">
-                                <Form.Label>Add Ons</Form.Label>
-                                <Select options={MenuTypeOptions} />
+                            <Form.Label>Add Ons</Form.Label>
+                            <Controller
+									name="addOns"
+									control={control}
+									render={({ field: { value, onChange, ref } }) => (
+                                        <Select options={AddOnsOptions} 
+                                        value={value}
+									    onChange={onChange}
+                                        />
+                                        )}
+								/>
                             </Form.Group>
 
                             <Form.Group className="mb-3">
                                 <Form.Label>Menu Type</Form.Label>
-                                <Select options={AddOnsOptions} />
+                                <Controller
+									name="MenuType"
+									control={control}
+									render={({ field: { value, onChange, ref } }) => (
+                                        <Select options={MenuTypeOptions} 
+                                        value={value}
+									    onChange={onChange}
+                                        />
+                                        )}
+								/>
                             </Form.Group>
 
                             <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                                 <Form.Label>Allergy Info</Form.Label>
                                 <Form.Control as="textarea"
-                                required
+                                {...register("allergyInfo", menuValidation.allergyInfo)}
                                 rows={3}
-                                onChange={changeInputHandler}
                                 />
                                 <Form.Text className="text-muted">
-                                    {errorElement(formInputError.allergyInfo)}
+                                <p className={"error_input_message"}>{errors.allergyInfo?.message}</p>
                                 </Form.Text>
                             </Form.Group>
 
-                            <Form.Group controlId="formFile" className="mb-3">
-                                <Form.Control type="file" />
-                            </Form.Group>
+                            <div className="custom-file mb-3">
+                                <input type="file" required {...register('productPicture')} className="custom-file-input" id="inputGroupFile01" />
+                                <label className="custom-file-label" htmlFor="inputGroupFile01">{'Menu Image'}</label>
+                            </div>
 
                             <button type="submit" className={'btn btn-send btn-block px-4'}>Create Menu</button>
                         </Form>

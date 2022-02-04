@@ -50,15 +50,15 @@ const Menu = () => {
                             <Row className={'shadow border-0 bg-white mt-2 mb-4'}>
                                 <Col md={7}>
                                     <div className="mt-2">
-                                        <h3>Zinger Burger</h3>
+                                        <h5>Zinger Burger</h5>
                                         <div className="d-flex justify-content-between align-items-center">
                                             <p>£ 5.00 </p>
                                             <p>Halal</p>
-                                            <h4>00:12</h4>
+                                            <p>00:12</p>
                                         </div>
-                                        <button className={' btn-send px-4 mr-2'} onClick={editMenuHandler}>
+                                        <button className={' btn-send px-3 mr-1'} onClick={editMenuHandler}>
                                             EDIT </button>
-                                        <button className={' btn-send px-4'} onClick={deleteMenuHandler}> DELETE </button>
+                                        <button className={' btn-send px-3'} onClick={deleteMenuHandler}> DELETE </button>
                                     </div>
                                 </Col>
                                 <Col md={5} >
@@ -68,19 +68,19 @@ const Menu = () => {
                                 </Col>
                             </Row>
                         </Col>
-                        <Col md={5} className={'mr-3'}>
+                        <Col md={5}>
                             <Row className={'shadow border-0 bg-white mt-2 mb-4'}>
                                 <Col md={7}>
                                     <div className="mt-2">
-                                        <h3>Zinger Burger</h3>
+                                        <h5>Zinger Burger</h5>
                                         <div className="d-flex justify-content-between align-items-center">
                                             <p>£ 5.00 </p>
                                             <p>Halal</p>
-                                            <h4>00:12</h4>
+                                            <p>00:12</p>
                                         </div>
-                                        <button className={' btn-send px-4 mr-2'} onClick={editMenuHandler}>
+                                        <button className={' btn-send px-3 mr-1'} onClick={editMenuHandler}>
                                             EDIT </button>
-                                        <button className={' btn-send px-4'} onClick={deleteMenuHandler}> DELETE </button>
+                                        <button className={' btn-send px-3'} onClick={deleteMenuHandler}> DELETE </button>
                                     </div>
                                 </Col>
                                 <Col md={5} >

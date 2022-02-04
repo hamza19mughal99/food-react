@@ -1,42 +1,38 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {useNavigate} from "react-router-dom";
-import {Form, FormControl, InputGroup} from "react-bootstrap";
+import {Form, InputGroup, FormControl} from "react-bootstrap";
+import {useForm} from "react-hook-form";
+import { categoryValidation } from '../../../../../Components/Validations/Validation';
 
-const EditCategory = () => {
+export interface CategoryInput {
+    categoryName: string,
+}
+
+const CreateCategory = () => {
     const navigate = useNavigate();
+    const { register, handleSubmit, formState: { errors } } = useForm<CategoryInput>();
 
-    const [category, setCategory] = useState({
-        title: 'Fast Food'
-    })
-
-    const addCategoryHandler = (e: { target: { name: any; value: any; }; }) => {
-        const {name, value} = e.target;
-        setCategory({
-            ...category,
-            [name]: value
-        })
-    }
-
-    const categorySubmitHandler = (e: { preventDefault: () => void; }) =>{
-        e.preventDefault();
+    const categoryDataSubmit = handleSubmit((data) => {
+        console.log(data)
         navigate('/vendor/category')
-    }
+
+    });
 
     return (
         <div className={'page_responsive'}>
-            <h2>Edit Category</h2>
+            <h2>Update Category</h2>
 
             <div className={'mt-5'}>
-                <Form onSubmit={categorySubmitHandler}>
+                <Form onSubmit={categoryDataSubmit}>
                     <InputGroup className="mb-3">
                         <FormControl
-                            name="category"
-                            required
-                            onChange={addCategoryHandler}
+                        defaultValue={'Fast Food'}
+                            {...register("categoryName", categoryValidation.categoryName)}
                             placeholder={'Enter a Category Name'}
-                            value={category.title}
                         />
                     </InputGroup>
+                    <p className={"error_input_message"}>{errors.categoryName?.message}</p>
+
                     <button type="submit" className={'btn btn-send btn-block px-4'}>Update Category</button>
                 </Form>
             </div>
@@ -44,4 +40,4 @@ const EditCategory = () => {
     );
 };
 
-export default EditCategory;
+export default CreateCategory;
