@@ -7,12 +7,12 @@ import {useNavigate} from "react-router-dom";
 import {useForm} from "react-hook-form";
 import {authValidation, shopCreateValidation} from "../../lib/validation";
 import { useRegister } from "../../hooks/vendor/auth";
-import "./Register.css";
+import "./register.css";
 import {IAuthInput, IUser} from "../../interface";
 import Loader from "../../components/Loader/Loader";
 import {USER_ROLE} from "../../App";
 import { useLocation } from "react-router-dom";
-import {LoginType} from "../login/Login";
+import {LoginType} from "../login/login";
 import jwt from "jwt-decode"
 
 export enum RegisterType {

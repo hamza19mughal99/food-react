@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import { Form } from "react-bootstrap";
 import {NavLink, useLocation} from "react-router-dom";
 import Lock from "../../assets/img/lock.png";
-import "./Login.css";
+import "./login.css";
 import { useForm } from "react-hook-form";
 import { authValidation } from "../../lib/validation";
 import { useNavigate } from "react-router-dom";
@@ -12,7 +12,7 @@ import {IAuthInput, IUser} from "../../interface";
 import Loader from "../../components/Loader/Loader";
 import {USER_ROLE} from "../../App";
 import jwt from "jwt-decode"
-import {RegisterType} from "../register/Register";
+import {RegisterType} from "../register/register";
 import {successNotify} from "../../utils/toast";
 
 export enum LoginType {
