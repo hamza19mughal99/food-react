@@ -3,32 +3,51 @@ import './App.css';
 import {Slide, ToastContainer} from "react-toastify";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-//Admin
-import {adminRoutes, RoutesLink } from "./Container/Admin/Navbar/Routes";
-import AdminNavbar from "./Container/Admin/Navbar/Navbar";
+//admin
+import {adminRoutes, RoutesLink } from "./container/admin/Navbar/routes";
+import AdminNavbar from "./container/admin/Navbar/Navbar";
 
-//Vendor
-import {vendorRoutes} from "./Container/Vendor/Navbar/Routes";
-import VendorNavbar from "./Container/Vendor/Navbar/Navbar";
+//vendor
+import { vendorRoutes} from "./container/vendor/Navbar/routes";
+import VendorNavbar from "./container/vendor/Navbar/Navbar";
 
 //Main
-import { mainRoutes } from './Container/Customer/Navbar/Routes/Routes';
-import Header from './Container/Customer/Navbar/Header/Header';
-import Footer from './Container/Customer/Navbar/Footer/Footer';
+import { mainRoutes } from './container/customer/Navbar/routes';
+import Header from './container/customer/Navbar/Header/Header';
+import Footer from './container/customer/Navbar/Footer/Footer';
 
 //Pages
-import VendorRegister from "./Container/Vendor/Pages/Register/Register";
-import VendorLogin from "./Container/Vendor/Pages/Login/Login";
-import AdminLogin from "./Container/Admin/Pages/Login/Login";
-import CustomerRegister from "./Container/Customer/Pages/Register/Register";
-import CustomerLogin from "./Container/Customer/Pages/Login/Login";
-import ShopCreate from './Container/Vendor/Pages/ShopCreate/ShopCreate';
-import ForgetPassword from './Components/ForgetPassword/ForgetPassword';
-import ResetPassword from './Components/ResetPassword/ResetPassword';
-import Stripe from './Components/Stripe/Stripe';
-import Error from './Components/Error/Error';
+import Register from "./container/Register/Register";
+import Login from "./container/Login/Login";
+import ForgetPassword from './components/ForgetPassword/ForgetPassword';
+import ResetPassword from './components/ResetPassword/ResetPassword';
+import Error404 from './components/404/404';
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+import ConnectAccount from "./container/vendor/Pages/Setting/ConnectAccount/ConnectAccount";
 
+export enum USER_ROLE {
+    CUSTOMER = "customer",
+    VENDOR = "vendor",
+    ADMIN = "admin"
+}
 
+export enum ORDER_STATUS {
+    UNDER_APPROVAL = "under-approval",
+    IN_PROGRESS = "in-progress",
+    REJECTED = "rejected",
+    COMPLETED = "completed"
+}
+
+export enum DELIVERY_TYPE {
+    DELIVERY = "delivery",
+    PICKUP = "pickUp",
+    BOTH = "both"
+}
+
+export function errorMessage(message: string) {
+    return  <small className={"text-danger my-3"}>{message}</small>
+
+}
 
 function App() {
 
@@ -37,7 +56,9 @@ function App() {
           <Route key={index} path={item.path} element={
             <React.Fragment>
               <AdminNavbar />
-                { item.component }
+                <PrivateRoute role={USER_ROLE.ADMIN}>
+                    { item.component }
+                </PrivateRoute>
             </React.Fragment>
           } />
       ))
@@ -48,7 +69,9 @@ function App() {
             <Route key={index} path={item.path} element={
                 <React.Fragment>
                     <VendorNavbar />
-                    { item.component }
+                    <PrivateRoute role={USER_ROLE.VENDOR}>
+                        { item.component }
+                    </PrivateRoute>
                 </React.Fragment>
             } />
         ))
@@ -85,16 +108,15 @@ function App() {
                   {adminLayout}
                   {vendorLayout}
                   {mainLayout}
-                  <Route path={'/admin/login'} element={<AdminLogin />} />
-                  <Route path={'/register'} element={<CustomerRegister />}/>
-                  <Route path={'/login'} element={<CustomerLogin />}  />
-                  <Route path={'/vendor/register'} element={<VendorRegister />}/>
-                  <Route path={'/vendor/login'} element={<VendorLogin />} />
-                  <Route path={'/shop-create'} element={<ShopCreate />} />
+                  <Route path={'/admin/login'} element={<Login />} />
+                  <Route path={'/register'} element={<Register />}/>
+                  <Route path={'/login'} element={<Login />}  />
+                  <Route path={'/vendor/register'} element={<Register />}/>
+                  <Route path={'/vendor/login'} element={<Login />} />
                   <Route path={'/forget-password'} element={<ForgetPassword />}/>
                   <Route path={'/reset-password/:id'} element={<ResetPassword />}/>
-                  <Route path={'/stripe'} element={<Stripe />}/>
-                  <Route path={'*'} element={<Error />}/>
+                  <Route path={'/vendor/account'} element={<ConnectAccount/>}/>
+                  <Route path={'*'} element={<Error404 />}/>
               </Routes>
           </Router>
       </div>

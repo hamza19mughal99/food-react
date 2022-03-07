@@ -49,6 +49,11 @@ body {
   width: 100% !important;
 }
 
-/*body ::placeholder{*/
-/*  font-size: 0;*/
-/*}*/
+@media (max-width: 786px) {
+  .active ~ .page_responsive {
+    width: calc(100% - 240px);
+    left: 240px;
+    transition: all 0.2s ease;
+    filter: blur(5px);
+  }
+}
