@@ -12,7 +12,7 @@ import {IAuthInput, IUser} from "../../interface";
 import Loader from "../../components/Loader/Loader";
 import {USER_ROLE} from "../../App";
 import jwt from "jwt-decode"
-import {RegisterType} from "../Register/Register";
+import {RegisterType} from "../register/Register";
 import {successNotify} from "../../utils/toast";
 
 export enum LoginType {

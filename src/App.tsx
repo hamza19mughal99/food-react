@@ -17,8 +17,8 @@ import Header from './container/customer/Navbar/Header/Header';
 import Footer from './container/customer/Navbar/Footer/Footer';
 
 //Pages
-import Register from "./container/Register/Register";
-import Login from "./container/Login/Login";
+import Register from "./container/register/Register";
+import Login from "./container/login/Login";
 import ForgetPassword from './components/ForgetPassword/ForgetPassword';
 import ResetPassword from './components/ResetPassword/ResetPassword';
 import Error404 from './components/404/404';

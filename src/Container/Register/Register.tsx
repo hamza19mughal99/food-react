@@ -12,7 +12,7 @@ import {IAuthInput, IUser} from "../../interface";
 import Loader from "../../components/Loader/Loader";
 import {USER_ROLE} from "../../App";
 import { useLocation } from "react-router-dom";
-import {LoginType} from "../Login/Login";
+import {LoginType} from "../login/Login";
 import jwt from "jwt-decode"
 
 export enum RegisterType {
