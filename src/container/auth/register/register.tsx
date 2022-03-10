@@ -1,16 +1,16 @@
 import React, {useEffect, useState} from 'react';
-import Env from "../../assets/img/env.png";
-import User from "../../assets/img/user.png";
-import Lock from "../../assets/img/lock.png";
-import Phone from "../../assets/img/phone.png";
+import Env from "../../../assets/img/env.png";
+import User from "../../../assets/img/user.png";
+import Lock from "../../../assets/img/lock.png";
+import Phone from "../../../assets/img/phone.png";
 import {useNavigate} from "react-router-dom";
 import {useForm} from "react-hook-form";
-import {authValidation, shopCreateValidation} from "../../lib/validation";
-import { useRegister } from "../../hooks/vendor/auth";
+import {authValidation, shopCreateValidation} from "../../../lib/validation";
+import { useRegister } from "../../../hooks/vendor/auth";
 import "./register.css";
-import {IAuthInput, IUser} from "../../interface";
-import Loader from "../../components/Loader/Loader";
-import {USER_ROLE} from "../../App";
+import {IAuthInput, IUser} from "../../../interface";
+import Loader from "../../../components/Loader/Loader";
+import {USER_ROLE} from "../../../App";
 import { useLocation } from "react-router-dom";
 import {LoginType} from "../login/login";
 import jwt from "jwt-decode"

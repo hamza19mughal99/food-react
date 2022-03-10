@@ -17,10 +17,10 @@ import Header from './container/customer/Navbar/Header/Header';
 import Footer from './container/customer/Navbar/Footer/Footer';
 
 //Pages
-import Register from "./container/register/register";
-import Login from "./container/login/login";
-import ForgetPassword from './components/ForgetPassword/ForgetPassword';
-import ResetPassword from './components/ResetPassword/ResetPassword';
+import Register from "./container/auth/register/register";
+import Login from "./container/auth/login/login";
+import ForgetPassword from './container/auth/ForgetPassword/ForgetPassword';
+import ResetPassword from './container/auth/ResetPassword/ResetPassword';
 import Error404 from './components/404/404';
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import ConnectAccount from "./container/vendor/Pages/Setting/ConnectAccount/ConnectAccount";
@@ -39,7 +39,8 @@ export enum ORDER_STATUS {
 }
 
 export enum DELIVERY_TYPE {
-    DELIVERY = "delivery",
+    LOCAL_DELIVERY = "local-delivery",
+    POSTAL_DELIVERY = "postal-delivery",
     PICKUP = "pickUp",
     BOTH = "both"
 }
@@ -113,9 +114,9 @@ function App() {
                   <Route path={'/login'} element={<Login />}  />
                   <Route path={'/vendor/register'} element={<Register />}/>
                   <Route path={'/vendor/login'} element={<Login />} />
-                  <Route path={'/forget-password'} element={<ForgetPassword />}/>
-                  <Route path={'/reset-password/:id'} element={<ResetPassword />}/>
+                  <Route path={'/resetPassword/:id'} element={<ResetPassword />}/>
                   <Route path={'/vendor/account'} element={<ConnectAccount/>}/>
+                  <Route path={'/forgetPassword'} element={<ForgetPassword/>}/>
                   <Route path={'*'} element={<Error404 />}/>
               </Routes>
           </Router>

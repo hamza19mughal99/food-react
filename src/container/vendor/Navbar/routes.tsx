@@ -27,6 +27,8 @@ import ShopCreate from "../Pages/ShopCreate/ShopCreate";
 import React from "react";
 import MenuType from "../Pages/MenuType/MenuType";
 import CreateMenuType from "../Pages/MenuType/CreateMenuType/CreateMenuType";
+import CreateSubscription from "../Pages/CreateSubscription/CreateSubscription";
+import Subscription from "../Pages/Subscription/Subscription";
 
 export interface RoutesLink {
     component: JSX.Element,
@@ -124,6 +126,14 @@ export const vendorRoutes: RoutesLink[] = [
     {
         path: '/vendor/shop',
         component: <ShopCreate/>
+    },
+    {
+        path: '/vendor/subscription',
+        component: <Subscription/>
+    },
+    {
+        path: '/vendor/create-subscription',
+        component: <CreateSubscription/>
     }
 ]
 
@@ -183,4 +193,10 @@ export const vendorSideBarItems: SideBarVendorRoutes[] = [
         title: 'Setting',
         isSubNav: false,
     },
+    {
+        path: "/vendor/subscription",
+        icon: <MdIcons.MdSubscriptions/>,
+        title: 'Subscription',
+        isSubNav: false,
+    }
 ]

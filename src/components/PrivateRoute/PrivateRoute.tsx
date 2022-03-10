@@ -26,8 +26,6 @@ const PrivateRoute: React.FC<IPrivateRouteProps> = ({children, role}) => {
     }
 
 
-
-
     if (decode.user.role === USER_ROLE.VENDOR) {
         if (location.pathname === "/vendor/shop") {
             if (decode.user.profileSetup) {
@@ -40,7 +38,19 @@ const PrivateRoute: React.FC<IPrivateRouteProps> = ({children, role}) => {
                 return <Navigate to={'/'}/>
             }
         }
+        if (location.pathname === "/vendor/create-subscription") {
+            if (decode.user.profileSetup && decode.user.subscriptionSetup) {
+                errorNotify("You are not authorize")
+                return <Navigate to={'/'}/>
+            }
+        } else {
+            if (decode.user.profileSetup && !decode.user.subscriptionSetup) {
+                errorNotify("You are not authorize")
+                return <Navigate to={'/'}/>
+            }
+        }
     }
+
 
 
     axios.get(`/auth/authorize/${token}`)

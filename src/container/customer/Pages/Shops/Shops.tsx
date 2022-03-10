@@ -21,8 +21,8 @@ const Shops = () => {
     const navigation = useNavigate();
 
     const [page, setPage] = useState(0);
+    const [postalShopPage, setPostalShopPage] = useState(0);
     const [isParams, setIsParams] = useState(false)
-    const coordinatesRegex = /^-?[0-9]{1,3}(?:\.[0-9]{1,10})?$/
     const [selectedCoordinates, setSelectedCoordinates] = useState<ICoordinates>({
         lat: 0,
         lng: 0
@@ -39,12 +39,6 @@ const Shops = () => {
 
         const lat = parseFloat(paramsLat!)
         const lng = parseFloat(paramsLng!)
-
-
-        if (!paramsLat?.match(coordinatesRegex) || !paramsLng?.match(coordinatesRegex)) {
-            errorNotify("Invalid location");
-            navigation("/")
-        }
 
 
         setSelectedCoordinates({
@@ -70,30 +64,59 @@ const Shops = () => {
     let showShops: any;
     if (isSuccess) {
         const totalPage = Math.ceil(res.data.shopsCount / PAGINATION_LIMIT)
+        const totalPostalShopPage = Math.ceil(res.data.postalDeliveryShopCount / PAGINATION_LIMIT)
+
         showShops = (
             <React.Fragment>
-                <Row className="justify-content-center">
-                    {
-                        res.data.shops.length > 0 ?
-                            res.data.shops.map((shop: IShopClient) => (
-                                <div className="col-md-4 col-lg-4 shop_cart mb-5" key={shop._id}>
-                                    <img src={shop.shopImage.avatar} alt={'pro-img'} />
-                                    <div className="pro-head">
-                                        <div>
-                                            <h3 className="text-left">{ shop.shopName }</h3>
-                                            <RatingStar avgRating={shop.avgRating} />
-                                            <FaMapMarkerAlt style={{color: "#ff4200"}} />
-                                            <span>{ shop.address }</span>
-                                            <hr />
+                <div>
+                    <Row className="justify-content-center">
+                        {
+                            res.data.shops.length > 0 ?
+                                res.data.shops.map((shop: IShopClient) => (
+                                    <div className="col-md-4 col-lg-4 shop_cart mb-5" key={shop._id}>
+                                        <img src={shop.shopImage.avatar} alt={'pro-img'} />
+                                        <div className="pro-head">
+                                            <div>
+                                                <h3 className="text-left">{ shop.shopName }</h3>
+                                                <RatingStar avgRating={shop.avgRating} />
+                                                <FaMapMarkerAlt style={{color: "#ff4200"}} />
+                                                <span>{ shop.address }</span>
+                                                <hr />
+                                            </div>
+                                            <NavLink to={`/shops/${shop.slug}`}><button className={'btn btn-visit'}>Visit</button></NavLink>
                                         </div>
-                                        <NavLink to={`/shops/${shop.slug}`}><button className={'btn btn-visit'}>Visit</button></NavLink>
                                     </div>
-                                </div>
-                            ))
-                            : <h2> No Shop Found </h2>
-                    }
-                </Row>
-                <Pagination page={page} setPage={setPage} totalPage={totalPage}/>
+                                ))
+                                : <h2> No Shop Found </h2>
+                        }
+                    </Row>
+                    <Pagination page={page} setPage={setPage} totalPage={totalPage}/>
+                </div>
+                <div className={"mt-4"}>
+                    <h2>Postal Delivery Shops</h2>
+                    <Row className="justify-content-center mt-3">
+                        {
+                            res.data.postalDeliveryShop.length > 0 ?
+                                res.data.postalDeliveryShop.map((shop: IShopClient) => (
+                                    <div className="col-md-4 col-lg-4 shop_cart mb-5" key={shop._id}>
+                                        <img src={shop.shopImage.avatar} alt={'pro-img'} />
+                                        <div className="pro-head">
+                                            <div>
+                                                <h3 className="text-left">{ shop.shopName }</h3>
+                                                <RatingStar avgRating={shop.avgRating} />
+                                                <FaMapMarkerAlt style={{color: "#ff4200"}} />
+                                                <span>{ shop.address }</span>
+                                                <hr />
+                                            </div>
+                                            <NavLink to={`/shops/${shop.slug}`}><button className={'btn btn-visit'}>Visit</button></NavLink>
+                                        </div>
+                                    </div>
+                                ))
+                                : <h2> No Shop Found </h2>
+                        }
+                    </Row>
+                    <Pagination page={postalShopPage} setPage={setPostalShopPage} totalPage={totalPage}/>
+                </div>
             </React.Fragment>
         )
 

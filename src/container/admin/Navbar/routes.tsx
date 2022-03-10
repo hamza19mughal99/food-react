@@ -6,6 +6,7 @@ import Dashboard from "../Pages/Dashboard/Dashboard";
 import CustomerView from "../Pages/CustomerView/CustomerView";
 import Refund from "../Pages/Refund/Refund";
 import VendorView from "../Pages/VendorView/VendorView";
+import Subscription from "../Pages/Subscription/Subscription";
 
 export interface RoutesLink {
     component: JSX.Element,
@@ -40,6 +41,10 @@ export const adminRoutes: RoutesLink[] = [
         path: '/admin/vendor-view',
         component: <VendorView />,
     },
+    {
+        path: '/admin/subscription',
+        component: <Subscription/>
+    }
 ]
 
 export const adminSideBarItems: SideBarRoutes[] = [
@@ -63,6 +68,12 @@ export const adminSideBarItems: SideBarRoutes[] = [
     },
     {
         path: '/admin/refund',
+        icon: <MdIcons.MdCarRental/>,
+        title: 'Refund',
+        isSubNav: false,
+    },
+    {
+        path: '/admin/subscription',
         icon: <MdIcons.MdCarRental/>,
         title: 'Refund',
         isSubNav: false,

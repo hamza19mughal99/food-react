@@ -21,7 +21,7 @@ const Setting = () => {
 
     const deliveryTypeOptions = [
         {value: 'delivery', label: 'Delivery'},
-        {value: 'pickUp', label: 'Puck Up'},
+        {value: 'pickUp', label: 'Pick Up'},
         {value: 'both', label: 'Both'}
     ]
 

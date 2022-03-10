@@ -50,11 +50,11 @@ const CreateMenuType = () => {
 
     if (isCreateSuccess) {
         successNotify(createRes.data.message)
-        navigate("/vendor/menu-type")
+        navigate("/vendor/product-type")
     }
     if (isEditSuccess) {
         successNotify(editRes.data.message)
-        navigate("/vendor/menu-type")
+        navigate("/vendor/product-type")
     }
 
 

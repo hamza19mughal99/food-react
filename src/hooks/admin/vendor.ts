@@ -82,3 +82,18 @@ export function useRefundOrder() {
     )
 }
 
+export function useAdminDashboard() {
+    return useQuery<any, IError>(
+        ["/admin/dashboard"],
+        () => axios.get(`/admin/dashboard`, getTokenFormat()),
+
+    )
+}
+
+export function useAdminSubscription(pageNo: number) {
+    return useQuery<any, IError>(
+        ["/admin/vendors/subscription", pageNo],
+        () => axios.get(`/admin/vendors/subscription?size=${PAGINATION_LIMIT}&page=${pageNo}`, getTokenFormat())
+    )
+}
+

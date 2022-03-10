@@ -40,6 +40,13 @@ const Header = () => {
                             <button className={'btn btn-main'} onClick={onLogOutHandler}> Log Out </button>
                         </React.Fragment>
                     )
+                } else if (!decode.user.subscriptionSetup && decode.user.profileSetup) {
+                    navItem = (
+                        <React.Fragment>
+                            <NavLink to={'/vendor/create-subscription'}><button className={'btn btn-main mr-1'}> Subscribe </button> </NavLink>
+                            <button className={'btn btn-main'} onClick={onLogOutHandler}> Log Out </button>
+                        </React.Fragment>
+                    )
                 } else {
                     navItem = (
                         <React.Fragment>

@@ -306,3 +306,23 @@ export function useToCompletedOrder() {
         }
     )
 }
+
+export function useGetSubscription() {
+    return useQuery<any, IError>(
+        ["/vendor/subscription"],
+        () => axios.get(`/vendor/subscription`, getTokenFormat())
+    )
+}
+
+export function useDeleteSubscription() {
+    const queryClient = useQueryClient()
+    return useMutation<any, IError, any>(
+        ["/vendor/subscription/cancel"],
+        () => axios.put(`/vendor/subscription/cancel`, null,  getTokenFormat()),
+        {
+            onSuccess: () => {
+                queryClient.refetchQueries(`/vendor/subscription`)
+            }
+        }
+    )
+}

@@ -1,19 +1,18 @@
 import React, {useEffect, useState} from 'react';
-import { Form } from "react-bootstrap";
-import {NavLink, useLocation} from "react-router-dom";
-import Lock from "../../assets/img/lock.png";
+import {Form} from "react-bootstrap";
+import {NavLink, useLocation, useNavigate} from "react-router-dom";
+import Lock from "../../../assets/img/lock.png";
 import "./login.css";
-import { useForm } from "react-hook-form";
-import { authValidation } from "../../lib/validation";
-import { useNavigate } from "react-router-dom";
-import Env from "../../assets/img/env.png";
-import {useLogin} from "../../hooks/vendor/auth";
-import {IAuthInput, IUser} from "../../interface";
-import Loader from "../../components/Loader/Loader";
-import {USER_ROLE} from "../../App";
+import {useForm} from "react-hook-form";
+import {authValidation} from "../../../lib/validation";
+import Env from "../../../assets/img/env.png";
+import {useLogin} from "../../../hooks/vendor/auth";
+import {IAuthInput, IUser} from "../../../interface";
+import Loader from "../../../components/Loader/Loader";
+import {USER_ROLE} from "../../../App";
 import jwt from "jwt-decode"
 import {RegisterType} from "../register/register";
-import {successNotify} from "../../utils/toast";
+import {successNotify} from "../../../utils/toast";
 
 export enum LoginType {
     customer = '/login',
@@ -26,7 +25,7 @@ const Login = () => {
     const location = useLocation()
     const [loginType, setLoginType] = useState("")
 
-    const { register, handleSubmit, setValue, formState: { errors } } = useForm<IAuthInput>();
+    const {register, handleSubmit, setValue, formState: {errors}} = useForm<IAuthInput>();
 
     useEffect(() => {
         switch (location.pathname) {
@@ -47,7 +46,6 @@ const Login = () => {
     }, [])
 
 
-
     const {mutate, isSuccess, isLoading, isError, error, data: res} = useLogin()
 
 
@@ -64,8 +62,11 @@ const Login = () => {
         const decode: { user: IUser } = jwt(res.data.token);
         switch (loginType) {
             case LoginType.vendor:
-                if (decode.user.profileSetup) {
+                console.log(decode.user.profileSetup, decode.user.subscriptionSetup)
+                if (decode.user.profileSetup && decode.user.subscriptionSetup) {
                     navigate('/vendor/dashboard')
+                } else if (!decode.user.subscriptionSetup && decode.user.profileSetup) {
+                    navigate('/vendor/create-subscription')
                 } else {
                     navigate('/vendor/shop')
                 }
@@ -108,22 +109,22 @@ const Login = () => {
                                     <div className=" form-row justify-content-center">
                                         <div className={errors.email ? "col-md-12 mb-2" : "col-md-12 mb-4"}>
                                             <label>Email</label>
-                                            <img src={Env} className="img-form" alt={'env'} />
+                                            <img src={Env} className="img-form" alt={'env'}/>
                                             <input type="text"
-                                                className={errors.email ? "form-control sign_in_error" : "form-control sign_in"}
-                                                placeholder="Enter Your Email"
-                                                {...register("email", authValidation.email)}
+                                                   className={errors.email ? "form-control sign_in_error" : "form-control sign_in"}
+                                                   placeholder="Enter Your Email"
+                                                   {...register("email", authValidation.email)}
                                             />
                                         </div>
                                         <small className={"text-danger"}>{errors.email?.message}</small>
 
                                         <div className={errors.password ? "col-md-12 mb-2" : "col-md-12 mb-4"}>
                                             <label>Password</label>
-                                            <img src={Lock} className="img-form" alt={'lock'} />
+                                            <img src={Lock} className="img-form" alt={'lock'}/>
                                             <input type="password"
-                                                className={errors.password ? "form-control sign_in_error" : "form-control sign_in"}
-                                                placeholder="min 8 character"
-                                                {...register("password", authValidation.password)}
+                                                   className={errors.password ? "form-control sign_in_error" : "form-control sign_in"}
+                                                   placeholder="min 8 character"
+                                                   {...register("password", authValidation.password)}
                                             />
                                         </div>
                                         <small className={"text-danger"}>{errors.password?.message}</small>
@@ -132,23 +133,26 @@ const Login = () => {
                                         </div>
                                     </div>
                                 </Form>
-                                <NavLink to="/forgetPassword"> <p className='forgetPassword_btn'> Forget Password ? </p> </NavLink>
+                                <NavLink to="/forgetPassword"><p className='forgetPassword_btn'> Forget Password ? </p>
+                                </NavLink>
 
                                 {
                                     loginType !== LoginType.admin ?
                                         (
                                             <div className={'customer__login__bottom-02 text-center p-4'}>
                                                 <p>Don't have account?</p>
-                                                <button onClick={toRegisterHandler} className="btn btn-send btn-block">REGISTER NOW</button>
+                                                <button onClick={toRegisterHandler}
+                                                        className="btn btn-send btn-block">REGISTER NOW
+                                                </button>
                                             </div>
                                         ) : null
                                 }
 
 
-
                                 <div>
                                     <p className='text-center'>or</p>
-                                    <button onClick={() => navigate('/')} className="btn btn-send btn-block">Back</button>
+                                    <button onClick={() => navigate('/')} className="btn btn-send btn-block">Back
+                                    </button>
                                 </div>
                             </div>
                         </div>

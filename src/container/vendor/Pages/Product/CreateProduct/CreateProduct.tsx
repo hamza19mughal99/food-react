@@ -166,12 +166,12 @@ const CreateProduct = () => {
 
     if (isSuccess) {
         successNotify(res.data.message)
-        navigate("/vendor/menu")
+        navigate("/vendor/product")
     }
 
     if (isEditSuccess) {
         successNotify(editRes.data.message)
-        navigate("/vendor/menu")
+        navigate("/vendor/product")
     }
 
     if (isError || isEditError) {
@@ -187,7 +187,7 @@ const CreateProduct = () => {
         <div className={'page_responsive'}>
             <div className='d-flex justify-content-between'>
                 <h2>{!isAddMode ? "Update" : "Create"} Product</h2>
-                <button className={'btn-send px-4 mr-2 mb-4'} onClick={() => navigate('/vendor/menu')}>Back</button>
+                <button className={'btn-send px-4 mr-2 mb-4'} onClick={() => navigate('/vendor/product')}>Back</button>
             </div>
             <div className={'mt-5'}>
                 <Row className={'justify-content-center'}>

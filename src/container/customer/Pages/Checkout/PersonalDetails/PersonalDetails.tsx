@@ -41,16 +41,22 @@ const PersonalDetails: React.FC<IPersonalDetails> = ({userDetails, cart, orderBi
         switch (cart.deliveryType) {
             case DELIVERY_TYPE.BOTH:
                 setDeliveryOption([
-                    {value: 'delivery', label: 'Delivery'},
+                    {value: DELIVERY_TYPE.LOCAL_DELIVERY, label: 'Local Delivery'},
                     {value: 'pickUp', label: 'Pick Up'},
                 ])
-                setDeliveryType({value: 'delivery', label: 'Delivery'},)
+                setDeliveryType({value: DELIVERY_TYPE.LOCAL_DELIVERY, label: "Local Delivery"},)
                 break;
-            case DELIVERY_TYPE.DELIVERY:
+            case DELIVERY_TYPE.LOCAL_DELIVERY:
                 setDeliveryOption([
-                    {value: 'delivery', label: 'Delivery'},
+                    {value: DELIVERY_TYPE.LOCAL_DELIVERY, label: 'Local Delivery'},
                 ])
-                setDeliveryType({value: 'delivery', label: 'Delivery'},)
+                setDeliveryType({value: DELIVERY_TYPE.LOCAL_DELIVERY, label: 'Local Delivery'},)
+                break;
+            case DELIVERY_TYPE.POSTAL_DELIVERY:
+                setDeliveryOption([
+                    {value: DELIVERY_TYPE.POSTAL_DELIVERY, label: 'Postal Delivery'},
+                ])
+                setDeliveryType({value: DELIVERY_TYPE.POSTAL_DELIVERY, label: 'Postal Delivery'},)
                 break;
             case DELIVERY_TYPE.PICKUP:
                 setDeliveryOption([
@@ -106,10 +112,6 @@ const PersonalDetails: React.FC<IPersonalDetails> = ({userDetails, cart, orderBi
             setLoader(false)
             mutate(data)
         }
-
-
-
-
     }
 
     if (isLoading) {

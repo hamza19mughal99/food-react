@@ -25,6 +25,7 @@ export interface IUser {
     shopStatus: SHOP_STATUS,
     phoneNumber: string,
     profileSetup: boolean,
+    subscriptionSetup: boolean,
     role: USER_ROLE,
     shop: string,
     location: ICoordinates

@@ -10,7 +10,7 @@ import {errorNotify, successNotify} from "../../../../utils/toast";
 import {ICoordinates, IShopInput} from "../../../../interface";
 import { useCreateShop } from "../../../../hooks/vendor/shop";
 import Loader from "../../../../components/Loader/Loader";
-import {errorMessage} from "../../../../App";
+import {DELIVERY_TYPE, errorMessage} from "../../../../App";
 import {useNavigate} from "react-router-dom";
 
 
@@ -19,9 +19,9 @@ const ShopCreate = () => {
     const [selectedCoordinates, setSelectedCoordinates] = useState<ICoordinates | null>(null)
     const {mutate, isSuccess, isLoading, isError, error, data: res} = useCreateShop();
     const deliveryTypeOptions = [
-        {value: 'delivery', label: 'Delivery'},
-        {value: 'pickUp', label: 'Puck Up'},
-        {value: 'both', label: 'Both'}
+        {value: DELIVERY_TYPE.LOCAL_DELIVERY, label: 'Local Delivery'},
+        {value: DELIVERY_TYPE.POSTAL_DELIVERY, label: 'Postal Delivery'},
+        {value: 'pickUp', label: 'Pick Up'},
     ]
 
     const {register, handleSubmit, control, watch, reset, formState: {errors}} = useForm<IShopInput>({
@@ -76,7 +76,7 @@ const ShopCreate = () => {
     if (isSuccess) {
         localStorage.removeItem(TOKEN);
         localStorage.setItem(TOKEN, res.data.token)
-        navigate("/vendor/dashboard")
+        navigate("/vendor/create-subscription")
         successNotify(res.data.message)
     }
 

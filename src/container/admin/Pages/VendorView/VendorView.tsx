@@ -13,6 +13,7 @@ import {
 import Loader from "../../../../components/Loader/Loader";
 import DisplayError from "../../../../components/DisplayError/DisplayError";
 import {successNotify} from "../../../../utils/toast";
+import { useNavigate } from "react-router-dom";
 
 enum VENDOR_KEY {
     ALL_VENDORS = "AllVendors",
@@ -21,7 +22,7 @@ enum VENDOR_KEY {
 }
 
 const VendorView = () => {
-
+    const navigation = useNavigate();
     const [key, setKey] = useState<string>(VENDOR_KEY.ALL_VENDORS);
     let vendors;
     const [allVendorsPageNo, setAllVendorsPageNo] = useState(0)

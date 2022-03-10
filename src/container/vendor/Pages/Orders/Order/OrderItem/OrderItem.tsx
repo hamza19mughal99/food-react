@@ -47,7 +47,7 @@ const OrderItem: React.FC<IOrderItem> = ({ item}) => {
                 <hr />
                 <div className={'price'}>
                     <p>PRICE</p>
-                    <span>${item.itemPrice}</span>
+                    <span>${item.itemPrice * item.quantity }</span>
                 </div>
             </div>
         </Col>
