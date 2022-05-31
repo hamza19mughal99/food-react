@@ -77,9 +77,9 @@ const Subscription = () => {
                                 <tbody>
                                 <tr className={'text-muted'}>
                                     <td>{data.email}</td>
-                                    <td>$ {data.amount_paid}</td>
+                                    <td>£ {data.amount_paid}</td>
                                     <td>{ getFormattedDate(Date.now() + data.period_start)}</td>
-                                    <td>$ {data.total}</td>
+                                    <td>£ {data.total}</td>
                                 </tr>
                                 </tbody>
                             </Table>

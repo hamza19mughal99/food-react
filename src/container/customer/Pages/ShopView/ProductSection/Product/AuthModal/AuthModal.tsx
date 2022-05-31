@@ -23,7 +23,7 @@ const AuthModal: React.FC<IAuthModal> = ({ show, handleChange }) => {
                 </div>
                 <div>
                     <h5>Don't Have An Account?</h5>
-                    <button onClick={() => navigation("/register")} className={'btn btn-send btn-block'}>Register Now</button>
+                    <button onClick={() => navigation("/register")} className={'btn btn-send btn-block'}>Fast Sign Up</button>
                 </div>
             </Modal.Body>
         </Modal>

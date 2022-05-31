@@ -105,7 +105,7 @@ const AddOnModal: React.FC<IAddOnModal> = ({ addOnShow, onAddOnModalChange, prod
                                                     <label className="form-check-label add_on_label">
                                                         <p className={'d-flex align-items-center justify-content-between'}>
                                                             <span>{value.name}</span>
-                                                            <span className='ml-3 text-muted'> $ {value.price}</span>
+                                                            <span className='ml-3 text-muted'> £ {value.price}</span>
                                                         </p>
                                                     </label>
                                                 </div>

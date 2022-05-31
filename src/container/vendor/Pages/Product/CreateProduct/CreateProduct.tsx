@@ -22,6 +22,7 @@ import {ICategory} from "../../Category/CreateCategory/CreateCategory";
 
 export interface IProductInput {
     productName: string,
+    productInfo: string,
     productPrice: number,
     cookingTime: Date,
     allergyInfo: string,
@@ -33,6 +34,7 @@ export interface IProductInput {
 
 export interface IProductInputResponse {
     productName: string,
+    productInfo: string,
     productPrice: number,
     cookingTime: string,
     allergyInfo: string,
@@ -66,6 +68,7 @@ const CreateProduct = () => {
             axios.get(`/vendor/products/${id}`, getTokenFormat())
                 .then((res: { data: IProductInputResponse }) => {
                     setValue("productName", res.data.productName)
+                    setValue("productInfo", res.data.productInfo)
                     setValue("productPrice", res.data.productPrice)
                     setValue("cookingTime", new Date(res.data.cookingTime))
                     setValue("allergyInfo", res.data.allergyInfo)
@@ -201,6 +204,15 @@ const CreateProduct = () => {
                                         {...register("productName", menuValidation.productName)}
                                         placeholder="Product Name"/>
                                     {errorMessage(errors.productName?.message!)}
+                                </Form.Group>
+
+                                <Form.Group className="mb-3 col-md-6" controlId="formBasicEmail">
+                                    <Form.Label>Product Information</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        {...register("productInfo", menuValidation.productInfo)}
+                                        placeholder="Product Information"/>
+                                    {errorMessage(errors.productInfo?.message!)}
                                 </Form.Group>
 
                                 <Form.Group className="mb-3 col-md-6" controlId="formBasicEmail">

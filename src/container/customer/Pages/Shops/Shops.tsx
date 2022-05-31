@@ -21,7 +21,6 @@ const Shops = () => {
     const navigation = useNavigate();
 
     const [page, setPage] = useState(0);
-    const [postalShopPage, setPostalShopPage] = useState(0);
     const [isParams, setIsParams] = useState(false)
     const [selectedCoordinates, setSelectedCoordinates] = useState<ICoordinates>({
         lat: 0,
@@ -91,31 +90,6 @@ const Shops = () => {
                         }
                     </Row>
                     <Pagination page={page} setPage={setPage} totalPage={totalPage}/>
-                </div>
-                <div className={"mt-4"}>
-                    <h2>Postal Delivery Shops</h2>
-                    <Row className="justify-content-center mt-3">
-                        {
-                            res.data.postalDeliveryShop.length > 0 ?
-                                res.data.postalDeliveryShop.map((shop: IShopClient) => (
-                                    <div className="col-md-4 col-lg-4 shop_cart mb-5" key={shop._id}>
-                                        <img src={shop.shopImage.avatar} alt={'pro-img'} />
-                                        <div className="pro-head">
-                                            <div>
-                                                <h3 className="text-left">{ shop.shopName }</h3>
-                                                <RatingStar avgRating={shop.avgRating} />
-                                                <FaMapMarkerAlt style={{color: "#ff4200"}} />
-                                                <span>{ shop.address }</span>
-                                                <hr />
-                                            </div>
-                                            <NavLink to={`/shops/${shop.slug}`}><button className={'btn btn-visit'}>Visit</button></NavLink>
-                                        </div>
-                                    </div>
-                                ))
-                                : <h2> No Shop Found </h2>
-                        }
-                    </Row>
-                    <Pagination page={postalShopPage} setPage={setPostalShopPage} totalPage={totalPage}/>
                 </div>
             </React.Fragment>
         )

@@ -14,6 +14,14 @@ export function useGetShops(coordinate: ICoordinates, isParams: boolean, pageNo:
     )
 }
 
+
+export function useGetPostalShops(pageNo: number) {
+    return useQuery<any, IError>(
+        [`/shops/postal?size=${PAGINATION_LIMIT}&page=${pageNo}`, `${pageNo}`],
+        () => axios.get(`/shops/postal?size=${PAGINATION_LIMIT}&page=${pageNo}`)
+    )
+}
+
 export function useGetShopById(slug: string, isParams: boolean) {
     return useQuery<any, IError>(
         ["/shops", slug],

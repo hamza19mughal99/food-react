@@ -76,6 +76,12 @@ export const menuValidation = {
             message: "Product name cannot be empty"
         }
     },
+    productInfo: {
+        required: {
+            value: true,
+            message: "Product information cannot be empty"
+        }
+    },
     productPrice: {
         required: {
             value: true,

@@ -62,7 +62,6 @@ const Login = () => {
         const decode: { user: IUser } = jwt(res.data.token);
         switch (loginType) {
             case LoginType.vendor:
-                console.log(decode.user.profileSetup, decode.user.subscriptionSetup)
                 if (decode.user.profileSetup && decode.user.subscriptionSetup) {
                     navigate('/vendor/dashboard')
                 } else if (!decode.user.subscriptionSetup && decode.user.profileSetup) {

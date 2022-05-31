@@ -55,7 +55,7 @@ const ProductSection: React.FC<IProductProps> = (props) => {
     if (props.category.length > 0) {
         const tab = props.category.map((category) => {
                 return (
-                    <Tab key={category._id} eventKey={category._id} title={category.title} className={'w-100'}>
+                    <Tab key={category._id} eventKey={category._id!} title={category.title} className={'w-100'}>
                         <ProductByCategory
                             categoryId={category._id!}
                             deliveryType={props.deliveryType}

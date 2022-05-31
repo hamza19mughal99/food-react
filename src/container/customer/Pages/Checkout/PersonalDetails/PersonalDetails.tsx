@@ -31,6 +31,7 @@ const PersonalDetails: React.FC<IPersonalDetails> = ({userDetails, cart, orderBi
     const elements = useElements();
 
     const [notes, setNotes] = useState("");
+    const [deliveryAddress, setDeliveryAddress] = useState("")
 
     const [deliveryOption, setDeliveryOption] = useState<any>([])
 
@@ -97,6 +98,7 @@ const PersonalDetails: React.FC<IPersonalDetails> = ({userDetails, cart, orderBi
             const data = {
                 notes,
                 deliveryType: (deliveryType!).value,
+                deliveryAddress,
                 orderBill: orderBillHandler(),
                 serviceCharge: serviceFeeCalculator(),
                 totalPrice: overAllCalculator(),
@@ -142,15 +144,30 @@ const PersonalDetails: React.FC<IPersonalDetails> = ({userDetails, cart, orderBi
             </div>
 
                 <Form onSubmit={onSubmitHandler}>
-                    <Form.Label>Additional Notes</Form.Label>
-                    <Form.Control
-                        type={'textarea'}
-                        as={'textarea'}
-                        required
-                        value={notes}
-                        className={'mb-3'}
-                        onChange={(e) => setNotes(e.target.value)}
-                    />
+                   <Form.Group>
+                       <Form.Label>Personalisation</Form.Label>
+                       <Form.Control
+                           type={'textarea'}
+                           as={'textarea'}
+                           required
+                           value={notes}
+                           className={'mb-3'}
+                           onChange={(e) => setNotes(e.target.value)}
+                       />
+                   </Form.Group>
+
+                    <Form.Group>
+                        <Form.Label>Delivery Address</Form.Label>
+                        <Form.Control
+                            type={'textarea'}
+                            as={'textarea'}
+                            required
+                            value={deliveryAddress}
+                            className={'mb-3'}
+                            onChange={(e) => setDeliveryAddress(e.target.value)}
+                        />
+                    </Form.Group>
+
                     <Form.Group>
                         <Form.Label>Delivery Type</Form.Label>
                         <Select

@@ -9,11 +9,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-toastify/dist/ReactToastify.css';
 import 'react-quill/dist/quill.snow.css';
 
-// axios.defaults.baseURL = 'http://localhost:4000/';
+axios.defaults.baseURL = 'http://localhost:4000/';
 
-
-
-axios.defaults.baseURL = 'https://snakrs-server.herokuapp.com/';
+// axios.defaults.baseURL = 'https://snakrs-server.herokuapp.com/';
 
 
 const queryClient = new QueryClient();
